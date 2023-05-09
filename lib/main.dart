@@ -169,16 +169,22 @@ class FavoritesPage extends StatelessWidget {
       children: [
         Padding(
             padding: const EdgeInsets.all(0),
-            child: Text(
-              'You have ' '${appState.favorites.length} favorites:',
-              style: style,
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text(
+                'You have ' '${appState.favorites.length} favorites:',
+                style: style,
+              ),
             )),
         for (var pair in appState.favorites)
           Card(
-            color: theme.colorScheme.inversePrimary,
-            child: ListTile(
-                leading: Icon(Icons.favorite), title: Text(pair.asLowerCase)),
-          )
+              color: theme.colorScheme.background,
+              child: ListTile(
+                leading: Icon(Icons.favorite),
+                title: Text(pair.asLowerCase,
+                    style: theme.textTheme.displaySmall!
+                        .copyWith(color: theme.colorScheme.primary)),
+              ))
       ],
     );
   }
